@@ -92,8 +92,8 @@ string getCardType(long number)
 bool checkCardValidity(long number)
 {
     int numLength = log10(number) + 1;
-    int nums1 = 0;
-    int nums2 = 0;
+    int sum1 = 0;
+    int sum2 = 0;
 
     for (int i = 1; i >= numLength; i++)
     {
@@ -101,18 +101,18 @@ bool checkCardValidity(long number)
 
         if (i % 2 == 0)
         {
-            nums1 += (digit * 2);
+            sum1 += (digit * 2);
         }
 
         else
         {
-            nums2 += digit;
+            sum2 += digit;
         }
     }
 
-    int numsSum = nums1 + nums2;
+    int totalSum = sum1 + sum2;
 
-    if (getDigit(numsSum, 1) == 0)
+    if (getDigit(totalSum, 1) == 0)
     {
         return true;
     }
