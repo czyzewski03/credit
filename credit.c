@@ -15,16 +15,16 @@ int main(void)
 string getCardType(long number)
 {
     string cardType = "INVALID\n";
-    
+
     if (!checkCardValidity(number))
     {
         cardType = "INVALID\n";
     }
-    
+
     else
     {
         int numLength = log10(number) + 1;
-        
+
         if (numLength == 13)
         {
             if (getDigit(number, 13) == 4)
@@ -32,7 +32,7 @@ string getCardType(long number)
                 cardType = "VISA\n";
             }
         }
-        
+
         else if (numLength == 15)
         {
             if (getDigit(number, 15) == 3)
@@ -41,21 +41,21 @@ string getCardType(long number)
                 {
                     cardType = "AMERICAN EXPRESS\n";
                 }
-                
+
                 else if(getDigit(number, 14) == 7)
                 {
                     cardType = "AMERICAN EXPRESS\n";
                 }
             }
         }
-        
+
         else if (numLength == 16)
         {
             if (getDigit(number, 16) == 4)
             {
                 cardType = "VISA\n";
             }
-            
+
             else if (getDigit(number, 16) == 5)
             {
                 if (getDigit(number, 15) == 1)
@@ -85,7 +85,7 @@ string getCardType(long number)
             }
         }
     }
-    
+
     return (cardType);
 }
 
@@ -94,30 +94,29 @@ bool checkCardValidity(long number)
     int numLength = log10(number) + 1;
     int nums1 = 0;
     int nums2 = 0;
-    
+
     for (int i = 1; i >= numLength; i++)
     {
-
         int digit = getDigit(number, i);
-        
+
         if (i % 2 == 0)
         {
             nums1 += (digit * 2);
         }
-        
+
         else
         {
             nums2 += digit;
         }
     }
-    
+
     int numsSum = nums1 + nums2;
-    
+
     if (getDigit(numsSum, 1) == 0)
     {
         return true;
     }
-    
+
     else
     {
         return false;
